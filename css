@@ -1,0 +1,93 @@
+.main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center; /* Center the circle horizontally */
+    align-items: center;    /* Center the circle vertically */
+    position: relative;
+}
+
+/* Keyframe for circle color animation */
+@keyframes example {
+    0%   { background-color: rgb(76, 223, 191); }
+    25%  { background-color: yellowgreen; }
+    50%  { background-color: blue; }
+    100% { background-color: green; }
+}
+
+/* Circle button styles */
+.circle {
+    width: 100px;
+    height: 100px;
+    background-color: darkcyan;
+    animation: example 4s infinite; /* Animation for color change */
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    z-index: 10;  /* Make sure the button is above other content */
+    transition: 0.5s ease; /* Smooth transition for background and transform */
+}
+
+/* Hover effect to scale up the circle */
+.circle:hover {
+    background-color: black;
+    transform: scale(3);
+}
+
+/* Animation when clicked to shrink the button and fade it */
+.circle.clicked {
+    background-color: black;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 1s ease, opacity 1s ease;
+}
+
+/* Pseudo-element for expanding the black background */
+.circle::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: transform 1s ease;
+    z-index: -1; /* Ensure it is behind the button */
+}
+
+/* When clicked, the background will expand */
+.circle.clicked::after {
+    transform: scale(50); /* Expanding effect */
+}
+
+/* Campfire animation - initially hidden */
+.campfire {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 200px;
+    background-color: #f9a800;
+    border-radius: 50%;
+    animation: fireAnimation 3s infinite alternate;
+    z-index: 5;
+}
+
+/* Campfire flame animation */
+@keyframes fireAnimation {
+    0% {
+        background-color: #f9a800;
+        box-shadow: 0 0 15px rgba(255, 100, 0, 0.8);
+    }
+    50% {
+        background-color: #ff5500;
+        box-shadow: 0 0 25px rgba(255, 200, 0, 0.8);
+    }
+    100% {
+        background-color: #ff2200;
+        box-shadow: 0 0 35px rgba(255, 220, 0, 0.8);
+    }
+}
