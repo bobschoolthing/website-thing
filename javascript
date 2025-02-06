@@ -9,3 +9,10 @@ document.getElementById('circleBtn').addEventListener('click', function() {
         document.getElementById('campfire').style.display = 'block'; // Make campfire visible
     }, 2000);  // Wait for 2 seconds before showing the campfire
 });
+
+
+
+
+document.getElementById('circleBtn').addEventListener;'click', function() {
+    this.classList.add('clicked');
+    document.body.style.backgroundColor = 'black'; }
